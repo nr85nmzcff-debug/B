@@ -1,1093 +1,564 @@
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08090a">
 <title>RoidcelShop</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --bg:#08090a;
-  --panel:#121416;
-  --panel2:#1b1e21;
-  --light:#c7cbd0;
-  --white:#f2f3f4;
-  --muted:#858b91;
-  --line:#30353a;
+:root{
+ --bg:#08090a;
+ --panel:#121518;
+ --panel2:#1b2024;
+ --silver:#c8cdd2;
+ --muted:#92999f;
+ --white:#f4f5f6;
+ --line:rgba(255,255,255,.1);
 }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--white);font-family:Manrope,sans-serif}
+button{font:inherit;cursor:pointer}
+.hidden{display:none!important}
 
-* {
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
+/* START */
+.intro{
+ position:fixed;inset:0;z-index:1000;
+ display:flex;align-items:center;justify-content:center;
+ text-align:center;padding:25px;
+ background:radial-gradient(ellipse at center,#252b30,#101315 48%,#050606)
 }
-
-body {
-  background:var(--bg);
-  color:var(--white);
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-button,a {
-  font-family:inherit;
-}
-
-.hidden {
-  display:none !important;
-}
-
-/* INTRO SCREEN */
-
-#introScreen {
-  position:fixed;
-  inset:0;
-  z-index:100;
-  background:
-    radial-gradient(ellipse at center,#25292d 0%,#111315 45%,#08090a 100%);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  text-align:center;
-  padding:25px;
-}
-
-.intro-content {
-  max-width:550px;
-  width:100%;
-  animation:fadeIn 1.2s ease;
-}
-
-.intro-logo {
-  font-size:clamp(38px,8vw,68px);
-  font-weight:900;
-  letter-spacing:5px;
-  margin-bottom:12px;
-}
-
-.intro-logo span {
-  color:var(--light);
-}
-
-.intro-subtitle {
-  color:var(--muted);
-  font-size:11px;
-  letter-spacing:5px;
-  margin-bottom:55px;
-  text-transform:uppercase;
-}
-
-.intro-divider {
-  width:55px;
-  height:1px;
-  background:var(--light);
-  margin:0 auto 25px;
-}
-
-.disclaimer {
-  color:#969ca2;
-  font-size:12px;
-  line-height:1.9;
-  margin:0 auto 32px;
-  max-width:440px;
-}
-
-.shop-button {
-  background:var(--light);
-  color:#08090a;
-  border:1px solid var(--light);
-  padding:16px 65px;
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:4px;
-  cursor:pointer;
-  transition:.3s;
-}
-
-.shop-button:hover {
-  background:transparent;
-  color:var(--white);
-}
-
-.intro-footer {
-  margin-top:60px;
-  font-size:9px;
-  color:#555b60;
-  letter-spacing:3px;
-}
-
-@keyframes fadeIn {
-  from {opacity:0;transform:translateY(15px)}
-  to {opacity:1;transform:translateY(0)}
-}
+.intro-content{max-width:620px}
+.intro-logo{font:600 clamp(50px,11vw,95px) Oswald;letter-spacing:5px;margin:0}
+.intro-logo span{color:var(--silver)}
+.intro-subtitle{font-size:12px;letter-spacing:4px;color:#aeb5bb;margin-top:12px}
+.intro-description{font-size:13px;line-height:2;color:#aab0b5;margin:35px auto;max-width:480px}
+.primary-btn{padding:16px 55px;border:1px solid var(--silver);background:var(--silver);color:#08090a;font-weight:800;letter-spacing:3px}
+.primary-btn:hover{background:transparent;color:white}
 
 /* HEADER */
-
-header {
-  padding:25px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  border-bottom:1px solid var(--line);
-  background:#0d0f10;
+#store{min-height:100vh}
+header{
+ height:76px;padding:0 7%;display:flex;align-items:center;
+ justify-content:space-between;border-bottom:1px solid var(--line);
+ position:sticky;top:0;z-index:20;background:rgba(8,9,10,.96);
+ backdrop-filter:blur(12px)
 }
+.brand{font:500 27px Oswald;letter-spacing:2px}
+.brand span{color:var(--silver)}
+.header-contact{color:var(--silver);text-decoration:none;border:1px solid var(--line);padding:10px 16px;font-size:10px;letter-spacing:1px}
 
-.logo {
-  font-size:26px;
-  font-weight:900;
-  letter-spacing:3px;
+/* HERO */
+.hero{text-align:center;padding:85px 20px 65px;background:linear-gradient(180deg,#151a1e,#08090a)}
+.hero-label{font-size:10px;letter-spacing:5px;color:var(--muted)}
+.hero h1{font:500 clamp(40px,7vw,68px) Oswald;letter-spacing:3px;margin:16px 0}
+.hero p{max-width:570px;margin:auto;color:#a5abb0;font-size:13px;line-height:2}
+
+/* CATEGORIES */
+.container{width:min(1120px,90%);margin:auto}
+.section-heading{margin:55px 0 28px}
+.section-heading small{color:var(--muted);letter-spacing:3px;font-size:10px}
+.section-heading h2{font:500 34px Oswald;margin:8px 0;letter-spacing:1px}
+.section-heading p{font-size:12px;color:var(--muted)}
+.category-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-bottom:75px}
+.category-card{
+ min-height:155px;padding:24px;text-align:left;color:white;
+ background:linear-gradient(145deg,#1c2226,#101315);
+ border:1px solid var(--line);position:relative;transition:.25s
 }
+.category-card:hover{border-color:#b5bdc4;transform:translateY(-4px)}
+.category-number{font:13px Oswald;color:#858d94;letter-spacing:3px}
+.category-name{display:block;font:25px Oswald;margin-top:17px}
+.category-count{display:block;font-size:10px;color:#858d94;margin-top:7px}
+.category-arrow{position:absolute;right:22px;bottom:20px;color:var(--silver);font-size:22px}
 
-.logo span {
-  color:var(--light);
-}
-
-.header-note {
-  color:var(--muted);
-  font-size:10px;
-  letter-spacing:3px;
-}
-
-/* MAIN */
-
-main {
-  max-width:1150px;
-  margin:auto;
-  padding:65px 22px;
-}
-
-.hero {
-  text-align:center;
-  margin-bottom:55px;
-}
-
-.eyebrow {
-  color:var(--light);
-  font-size:10px;
-  letter-spacing:5px;
-  text-transform:uppercase;
-}
-
-.hero h1 {
-  font-size:clamp(32px,6vw,48px);
-  margin:15px 0;
-  letter-spacing:2px;
-}
-
-.hero p {
-  color:var(--muted);
-  font-size:13px;
-}
-
-/* CATEGORY VIEW */
-
-.view-title {
-  text-align:center;
-  font-size:23px;
-  margin-bottom:30px;
-  letter-spacing:2px;
-}
-
-.category-nav {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
-  gap:16px;
-}
-
-.category-btn {
-  min-height:115px;
-  padding:20px;
-  background:var(--panel);
-  color:var(--white);
-  border:1px solid var(--line);
-  cursor:pointer;
-  transition:.3s;
-  font-size:15px;
-  letter-spacing:2px;
-}
-
-.category-btn:hover {
-  background:#25292d;
-  border-color:var(--light);
-  transform:translateY(-4px);
-}
-
-/* PRODUCT VIEW */
-
-.back-button {
-  background:transparent;
-  border:1px solid var(--line);
-  color:var(--light);
-  padding:11px 22px;
-  cursor:pointer;
-  margin-bottom:30px;
-  font-size:11px;
-  letter-spacing:2px;
-}
-
-.back-button:hover {
-  background:var(--panel2);
-}
-
-.section-head {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:20px;
-  gap:15px;
-}
-
-.section-head h2 {
-  font-size:23px;
-}
-
-.section-head p {
-  color:var(--muted);
-  font-size:11px;
-}
-
-.products {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:20px;
-}
-
-.product {
-  background:var(--panel);
-  border:1px solid var(--line);
-  cursor:pointer;
-  transition:.3s;
-}
-
-.product:hover {
-  transform:translateY(-5px);
-  border-color:#bfc4c9;
-}
-
-.product-photo {
-  height:240px;
-  background:linear-gradient(145deg,#25292d,#111315);
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  overflow:hidden;
-}
-
-.product-photo img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.photo-placeholder {
-  color:#727980;
-  font-size:11px;
-  letter-spacing:3px;
-}
-
-.product-info {
-  padding:20px;
-}
-
-.product-name {
-  font-size:17px;
-  margin-bottom:16px;
-}
-
-.meta {
-  display:flex;
-  justify-content:space-between;
-  color:var(--muted);
-  font-size:12px;
-}
-
-.price {
-  color:var(--light);
-  font-weight:bold;
-}
-
-.open-hint {
-  margin-top:18px;
-  color:#969ca2;
-  font-size:10px;
-  letter-spacing:2px;
-}
-
-.manager-link {
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  margin-top:17px;
-  padding:13px;
-  background:#c7cbd0;
-  color:#08090a;
-  text-decoration:none;
-  font-size:10px;
-  font-weight:bold;
-  letter-spacing:2px;
-  transition:.3s;
-}
-
-.manager-link:hover {
-  background:white;
-}
-
-/* ABOUT */
-
-.about {
-  margin-top:100px;
-  padding:35px;
-  background:var(--panel);
-  border:1px solid var(--line);
-}
-
-.about h2 {
-  font-size:23px;
-  letter-spacing:2px;
-  margin-bottom:20px;
-}
-
-.about p {
-  color:var(--muted);
-  font-size:13px;
-  line-height:2;
-  white-space:pre-wrap;
-}
-
-/* 3D CUBE */
-
-.geometry-wrap {
-  height:220px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  perspective:700px;
-  margin-top:50px;
-  overflow:hidden;
-}
-
-.geometry {
-  width:90px;
-  height:90px;
-  position:relative;
-  transform-style:preserve-3d;
-  animation:spin3d 9s linear infinite;
-}
-
-.geometry-face {
-  position:absolute;
-  inset:0;
-  border:2px solid #c7cbd0;
-  background:#c7cbd018;
-}
-
-.geometry-face:nth-child(1) {
-  transform:translateZ(45px);
-}
-
-.geometry-face:nth-child(2) {
-  transform:rotateY(180deg) translateZ(45px);
-}
-
-.geometry-face:nth-child(3) {
-  transform:rotateY(90deg) translateZ(45px);
-}
-
-.geometry-face:nth-child(4) {
-  transform:rotateY(-90deg) translateZ(45px);
-}
-
-.geometry-face:nth-child(5) {
-  transform:rotateX(90deg) translateZ(45px);
-}
-
-.geometry-face:nth-child(6) {
-  transform:rotateX(-90deg) translateZ(45px);
-}
-
-@keyframes spin3d {
-  from {
-    transform:rotateX(-25deg) rotateY(0deg) rotateZ(0deg);
-  }
-  to {
-    transform:rotateX(335deg) rotateY(360deg) rotateZ(360deg);
-  }
-}
-
-.geometry-caption {
-  text-align:center;
-  color:#777e84;
-  font-size:10px;
-  letter-spacing:4px;
-  margin-top:-15px;
-}
+/* PRODUCTS */
+.back-btn{padding:11px 17px;background:transparent;border:1px solid var(--line);color:var(--silver);font-size:11px;letter-spacing:1px;margin-bottom:25px}
+.products-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:17px}
+.product-card{padding:12px;background:var(--panel);border:1px solid var(--line);transition:.2s}
+.product-card:hover{border-color:#818b93;transform:translateY(-3px)}
+.product-open{display:block;width:100%;padding:0;border:0;background:none;color:white;text-align:left}
+.product-image{display:block;width:100%;aspect-ratio:1;object-fit:cover;background:#22282d}
+.product-name{display:block;padding:14px 3px 5px;font:19px Oswald;min-height:45px}
+.product-contact{display:block;text-align:center;text-decoration:none;border:1px solid #505960;color:#d5d9dc;padding:11px 4px;margin-top:8px;font-size:10px;letter-spacing:1px}
+.product-contact:hover{background:var(--silver);color:#08090a}
 
 /* PRODUCT MODAL */
+.modal{display:none;position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.9);padding:20px;overflow-y:auto;align-items:center;justify-content:center}
+.modal.active{display:flex}
+.modal-content{width:min(760px,100%);background:#111619;border:1px solid #424a50;padding:27px;position:relative;margin:auto}
+.close-modal{position:absolute;right:17px;top:10px;background:none;border:0;color:white;font-size:30px}
+.modal-title{font:32px Oswald;margin:0 35px 20px 0}
+.modal-gallery{display:flex;gap:14px;margin:20px 0}
+.gallery-item{width:115px}
+.gallery-item img{width:115px;height:115px;object-fit:cover;background:#252b30;border:1px solid var(--line);cursor:zoom-in}
+.gallery-item span{display:block;font-size:10px;color:var(--muted);margin-top:7px}
+.detail-label{font-size:10px;color:#9ba3aa;letter-spacing:2px;margin:22px 0 10px;text-transform:uppercase}
+.modal-description{font-size:13px;line-height:1.9;color:#b5bbc0;white-space:pre-wrap}
+.form-buttons,.volume-buttons{display:flex;flex-wrap:wrap;gap:9px}
+.choice-btn{padding:11px 16px;background:#1c2226;border:1px solid #485159;color:#e0e3e5;font-size:12px}
+.choice-btn.active,.choice-btn:hover{background:var(--silver);color:#08090a;border-color:var(--silver)}
+.price-display{font:27px Oswald;margin:18px 0}
+.modal-contact{display:block;text-align:center;text-decoration:none;background:var(--silver);color:#08090a;padding:15px;margin-top:22px;font-size:11px;font-weight:800;letter-spacing:2px}
 
-.modal {
-  position:fixed;
-  inset:0;
-  background:#000e;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:20px;
-  z-index:50;
+/* IMAGE ZOOM */
+.image-view{position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.96);display:none;align-items:center;justify-content:center;padding:20px}
+.image-view.active{display:flex}
+.image-view img{max-width:90vw;max-height:85vh;object-fit:contain}
+.image-view button{position:absolute;right:25px;top:15px;background:none;border:0;color:white;font-size:35px}
+
+/* CUBE */
+.cube-section{padding:60px 20px 80px;text-align:center;background:linear-gradient(180deg,#08090a,#151a1e);border-top:1px solid var(--line)}
+.cube-scene{width:120px;height:120px;margin:45px auto 55px;perspective:500px}
+.cube{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:rotateCube 12s linear infinite}
+.cube-face{position:absolute;width:120px;height:120px;border:2px solid #c8cdd2;background:rgba(180,190,200,.07);box-shadow:inset 0 0 30px rgba(200,210,220,.1)}
+.front{transform:translateZ(60px)}
+.back{transform:rotateY(180deg) translateZ(60px)}
+.right{transform:rotateY(90deg) translateZ(60px)}
+.left{transform:rotateY(-90deg) translateZ(60px)}
+.top{transform:rotateX(90deg) translateZ(60px)}
+.bottom{transform:rotateX(-90deg) translateZ(60px)}
+@keyframes rotateCube{from{transform:rotateX(0) rotateY(0) rotateZ(0)}to{transform:rotateX(360deg) rotateY(360deg) rotateZ(360deg)}}
+.telegram-channel{display:inline-block;padding:15px 28px;color:#e1e5e8;border:1px solid #aab2b9;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:2px}
+.telegram-channel:hover{background:var(--silver);color:#08090a}
+
+/* ABOUT */
+.about{padding:60px 20px;text-align:center;border-top:1px solid var(--line)}
+.about h2{font:30px Oswald}
+.about p{max-width:600px;margin:auto;color:#9ca3a9;font-size:12px;line-height:2}
+footer{text-align:center;padding:25px;border-top:1px solid var(--line);color:#697178;font-size:10px;letter-spacing:1px}
+
+@media(max-width:700px){
+ header{padding:0 5%}
+ .category-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+ .category-card{min-height:135px;padding:17px}
+ .category-name{font-size:21px}
+ .products-grid{grid-template-columns:repeat(2,1fr);gap:10px}
+ .product-card{padding:8px}
+ .product-name{font-size:16px}
+ .hero{padding:65px 20px 50px}
+ .modal-content{padding:20px}
 }
-
-.modal.show {
-  display:flex;
-}
-
-.modal-card {
-  width:min(850px,100%);
-  max-height:90vh;
-  overflow:auto;
-  background:var(--panel);
-  border:1px solid var(--line);
-  position:relative;
-}
-
-.close {
-  position:absolute;
-  right:15px;
-  top:15px;
-  width:35px;
-  height:35px;
-  border:1px solid var(--line);
-  background:#22272b;
-  color:white;
-  font-size:22px;
-  cursor:pointer;
-}
-
-.detail-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-}
-
-.detail-image {
-  min-height:380px;
-  background:#1d2023;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.detail-image img {
-  width:100%;
-  height:100%;
-  max-height:500px;
-  object-fit:cover;
-}
-
-.detail-copy {
-  padding:45px 30px;
-}
-
-.detail-copy h2 {
-  font-size:27px;
-  margin:20px 0;
-}
-
-.detail-price {
-  font-size:25px;
-  color:var(--light);
-  font-weight:bold;
-  margin:20px 0 10px;
-}
-
-.detail-volume {
-  color:var(--muted);
-  font-size:13px;
-}
-
-.detail-copy p {
-  color:#a5abb0;
-  font-size:13px;
-  line-height:1.9;
-  margin:25px 0;
-  white-space:pre-wrap;
-}
-
-/* FOOTER */
-
-footer {
-  text-align:center;
-  border-top:1px solid var(--line);
-  padding:30px;
-  color:#646b71;
-  font-size:10px;
-  letter-spacing:3px;
-}
-
-@media(max-width:650px) {
-  header {
-    padding:22px;
-  }
-
-  .logo {
-    font-size:21px;
-  }
-
-  .header-note {
-    font-size:8px;
-  }
-
-  main {
-    padding:45px 17px;
-  }
-
-  .detail-grid {
-    grid-template-columns:1fr;
-  }
-
-  .detail-image {
-    min-height:260px;
-    max-height:300px;
-  }
-
-  .detail-copy {
-    padding:28px 22px;
-  }
-
-  .about {
-    padding:25px;
-  }
-}
-
 </style>
 </head>
 
 <body>
 
-<!-- FIRST OPENING SCREEN -->
-
-<div id="introScreen">
-
-  <div class="intro-content">
-
-    <div class="intro-logo">
-      ROIDCEL<span>SHOP</span>
-    </div>
-
-    <div class="intro-subtitle">
-      Premium Store Experience
-    </div>
-
-    <div class="intro-divider"></div>
-
-    <div class="disclaimer">
-      DISCLAIMER: This website is provided for informational
-      purposes only. Product descriptions do not constitute
-      medical advice or recommendations. No claims regarding
-      safety or effectiveness are made. Always follow applicable
-      laws and consult a qualified healthcare professional
-      regarding medical products.
-    </div>
-
-    <button class="shop-button" onclick="enterShop()">
-      SHOP
-    </button>
-
-    <div class="intro-footer">
-      ROIDCELSHOP © 2026
-    </div>
-
-  </div>
-
+<div class="intro" id="intro">
+ <div class="intro-content">
+  <h1 class="intro-logo">Roidcel<span>Shop</span></h1>
+  <div class="intro-subtitle">Добро пожаловать в наш каталог</div>
+  <p class="intro-description">
+   Добро пожаловать в RoidcelShop.
+   Здесь представлен каталог товаров, фотографии и информация о них.
+   Выберите интересующую категорию и ознакомьтесь с ассортиментом.
+   По дополнительным вопросам можно обратиться к менеджеру.
+  </p>
+  <button class="primary-btn" onclick="enterShop()">SHOP</button>
+ </div>
 </div>
-
-<!-- STORE -->
 
 <div id="store" class="hidden">
-
 <header>
-
-  <div class="logo">
-    ROIDCEL<span>SHOP</span>
-  </div>
-
-  <div class="header-note">
-    OFFICIAL STORE
-  </div>
-
+ <div class="brand">Roidcel<span>Shop</span></div>
+ <a class="header-contact" href="https://t.me/erda10" target="_blank">СВЯЗАТЬСЯ С МЕНЕДЖЕРОМ</a>
 </header>
 
-<main>
+<section class="hero">
+ <div class="hero-label">OFFICIAL CATALOG</div>
+ <h1>ROIDCELSHOP</h1>
+ <p>Изучите наш каталог и выберите интересующую категорию. В карточках товаров представлены фотографии и подробная информация. Если у вас возникнут вопросы, вы можете связаться с менеджером.</p>
+</section>
 
-  <section class="hero">
-
-    <div class="eyebrow">
-      Welcome to
-    </div>
-
-    <h1>RoidcelShop</h1>
-
-    <p>
-      Select a category to explore our collection.
-    </p>
-
-  </section>
-
-  <!-- CATEGORIES -->
-
-  <section id="categoriesView">
-
-    <h2 class="view-title">
-      CATEGORIES
-    </h2>
-
-    <nav class="category-nav" id="categoryNav"></nav>
-
-  </section>
-
-  <!-- PRODUCTS -->
-
-  <section id="productsView" class="hidden">
-
-    <button class="back-button" onclick="showCategories()">
-      ← BACK TO CATEGORIES
-    </button>
-
-    <div class="section-head">
-
-      <h2 id="categoryTitle"></h2>
-
-      <p>1 PRODUCT</p>
-
-    </div>
-
-    <div class="products" id="products"></div>
-
-  </section>
-
-  <!-- ABOUT -->
-
-  <section class="about">
-
-    <h2>ABOUT THE STORE</h2>
-
-    <!-- WRITE YOUR STORE DESCRIPTION BELOW -->
-
-    <p>
-Write your store information here.
-
-You can describe your store, its history,
-contact information and other details.
-    </p>
-
-  </section>
-
-  <!-- ROTATING 3D CUBE -->
-
-  <div class="geometry-wrap">
-
-    <div class="geometry">
-
-      <div class="geometry-face"></div>
-      <div class="geometry-face"></div>
-      <div class="geometry-face"></div>
-      <div class="geometry-face"></div>
-      <div class="geometry-face"></div>
-      <div class="geometry-face"></div>
-
-    </div>
-
+<main class="container">
+ <section id="categoriesSection">
+  <div class="section-heading">
+   <small>01 / КАТАЛОГ</small>
+   <h2>НАШИ КАТЕГОРИИ</h2>
+   <p>Выберите категорию, чтобы посмотреть товары.</p>
   </div>
+  <div class="category-grid" id="categoryGrid"></div>
+ </section>
 
-  <div class="geometry-caption">
-    ROIDCELSHOP
+ <section id="productsSection" class="hidden">
+  <button class="back-btn" onclick="backToCategories()">← НАЗАД К КАТЕГОРИЯМ</button>
+  <div class="section-heading">
+   <small>02 / ВЫБРАННАЯ КАТЕГОРИЯ</small>
+   <h2 id="productsHeading"></h2>
+   <p>Нажмите на товар, чтобы открыть подробную информацию.</p>
   </div>
-
+  <div class="products-grid" id="productsGrid"></div>
+ </section>
 </main>
 
-<footer>
-  © <span id="year"></span> ROIDCELSHOP
-</footer>
+<section class="cube-section">
+ <div class="section-heading">
+  <small>ROIDCELSHOP</small>
+  <h2>НАШЕ ПРОСТРАНСТВО</h2>
+ </div>
+ <div class="cube-scene">
+  <div class="cube">
+   <div class="cube-face front"></div>
+   <div class="cube-face back"></div>
+   <div class="cube-face right"></div>
+   <div class="cube-face left"></div>
+   <div class="cube-face top"></div>
+   <div class="cube-face bottom"></div>
+  </div>
+ </div>
+ <a class="telegram-channel" href="https://t.me/roidcelshop" target="_blank">TELEGRAM CHANNEL ↗</a>
+</section>
 
+<section class="about">
+ <h2>ABOUT</h2>
+ <p>ВПИШИ СЮДА ТЕКСТ О СВОЁМ МАГАЗИНЕ</p>
+</section>
+<footer>© 2026 ROIDCELSHOP. ALL RIGHTS RESERVED.</footer>
 </div>
 
-<!-- PRODUCT DETAILS -->
-
-<div class="modal" id="modal">
-
-  <div class="modal-card">
-
-    <button class="close" onclick="closeProduct()">
-      ×
-    </button>
-
-    <div class="detail-grid">
-
-      <div class="detail-image" id="detailImage">
-
-        <span class="photo-placeholder">
-          PRODUCT IMAGE
-        </span>
-
-      </div>
-
-      <div class="detail-copy">
-
-        <div class="eyebrow">
-          ROIDCELSHOP
-        </div>
-
-        <h2 id="detailName"></h2>
-
-        <div class="detail-price" id="detailPrice"></div>
-
-        <div class="detail-volume" id="detailVolume"></div>
-
-        <p id="detailDescription"></p>
-
-        <a
-          class="manager-link"
-          href="https://t.me/erda10"
-          target="_blank"
-          rel="noopener noreferrer">
-
-          CONTACT THE MANAGER
-
-        </a>
-
-      </div>
-
-    </div>
-
+<div class="modal" id="productModal">
+ <div class="modal-content">
+  <button class="close-modal" onclick="closeModal()">×</button>
+  <h2 class="modal-title" id="modalTitle"></h2>
+  <div class="modal-gallery">
+   <div class="gallery-item">
+    <img id="modalProductImage" alt="Фото товара" onclick="zoomImage(this.src)">
+    <span>ФОТО ТОВАРА</span>
+   </div>
+   <div class="gallery-item">
+    <img id="modalCertificateImage" alt="Сертификат" onclick="zoomImage(this.src)">
+    <span>СЕРТИФИКАТ</span>
+   </div>
   </div>
+  <div class="detail-label">Описание</div>
+  <div class="modal-description" id="modalDescription"></div>
+  <div id="formArea" class="hidden">
+   <div class="detail-label">Выберите форму</div>
+   <div class="form-buttons" id="formButtons"></div>
+  </div>
+  <div class="detail-label">Выберите объём / фасовку</div>
+  <div class="volume-buttons" id="volumeButtons"></div>
+  <div class="price-display" id="priceDisplay"></div>
+  <a class="modal-contact" href="https://t.me/erda10" target="_blank">CONTACT THE MANAGER ↗</a>
+ </div>
+</div>
 
+<div class="image-view" id="imageView" onclick="closeZoom()">
+ <button onclick="closeZoom()">×</button>
+ <img id="zoomedImage" alt="Увеличенное фото">
 </div>
 
 <script>
 
-/*
-========================================
-           PRODUCT SETTINGS
-========================================
-
-category = Category name
-name = Product name
-price = Product price
-volume = Product volume
-description = Product description
-image = Image path
-
-Example:
-image: "images/product1.jpg"
-
-Put your product photos inside
-the images folder in GitHub.
-
-========================================
-*/
+/* ==================================================
+   ЗАПОЛНЕНИЕ КАТАЛОГА
+================================================== */
 
 const productsData = [
 
-  {
-    category: "",
-    name: "",
-    price: "0 €",
-    volume: "Enter volume",
-    description: "Write product description here.",
-    image: ""
-  },
+/* КАТЕГОРИЯ 1 — LAB REAGENT */
+{
+ name:"LAB REAGENT",
+ products:[
+  {name:"Erdafitinib", image:"", certificate:"", description:"Селективный ингибитор FGFR. Для исследовательских целей.", volumes:[{volume:"500mg", price:"9 499₽"},{volume:"1g", price:"15.000₽"}]},
+  {name:"Infigratinib", image:"", certificate:"", description:"Ингибитор FGFR1-3. Для исследовательских целей.", volumes:[{volume:"1g", price:"23.500₽"}]},
+  {name:"KY19382", image:"", certificate:"", description:"Активатор Wnt/β-catenin.", volumes:[{volume:"1g", price:"28.500₽"}]},
+  {name:"TYRA-300", image:"", certificate:"", description:"Селективный ингибитор FGFR3.", volumes:[{volume:"1g", price:"2000$"}]},
+  {name:"WAY-316606", image:"", certificate:"", description:"Антагонист SFRP1, активатор Wnt.", volumes:[{volume:"1g", price:"10 499₽"}]},
+  {name:"Abaloparatide", image:"", certificate:"", description:"Аналог PTHrP, стимулятор остеобластов.", volumes:[{volume:"10mg", price:"13 449₽"},{volume:"100mg", price:"41 000₽"},{volume:"1g", price:"80 000₽"}]}
+ ]
+},
 
-  {
-    category: "",
-    name: "",
-    price: "0 €",
-    volume: "Enter volume",
-    description: "Write product description here.",
-    image: ""
-  },
+/* КАТЕГОРИЯ 2 — DRUG */
+{
+ name:"DRUG",
+ products:[
+  {name:"Anastrozole", image:"", certificate:"", description:"Ингибитор ароматазы. 1мг.", volumes:[{volume:"30 таблеток", price:"1 490₽"}]},
+  {name:"Letrozole", image:"", certificate:"", description:"Ингибитор ароматазы. 2.5мг.", volumes:[{volume:"30 таблеток", price:"1 990₽"}]},
+  {name:"Exemestane", image:"", certificate:"", description:"Ингибитор ароматазы. 25мг.", volumes:[{volume:"30 таблеток", price:"3 490₽"}]},
+  {name:"Tamoxifen", image:"", certificate:"", description:"Модулятор эстрогеновых рецепторов. 20мг.", volumes:[{volume:"30 таблеток", price:"490₽"}]},
+  {name:"Finasteride 1mg", image:"", certificate:"", description:"Блокатор DHT. 1мг.", volumes:[{volume:"10 таблеток", price:"180₽"}]},
+  {name:"Finasteride 5mg", image:"", certificate:"", description:"Блокатор DHT. 5мг.", volumes:[{volume:"10 таблеток", price:"300₽"}]},
+  {name:"Dutasteride 0.5mg", image:"", certificate:"", description:"Блокатор DHT. 0.5мг.", volumes:[{volume:"10 таблеток", price:"250₽"}]},
+  {name:"Minoxidil 10mg", image:"", certificate:"", description:"Для роста волос. 10мг.", volumes:[{volume:"10 таблеток", price:"549₽"}]},
+  {name:"Isotretinoin 40mg", image:"", certificate:"", description:"Ретиноид для кожи. 40мг.", volumes:[{volume:"10 таблеток", price:"1 200₽"}]},
+  {name:"Isotretinoin 2.5mg", image:"", certificate:"", description:"Ретиноид для кожи. 2.5мг.", volumes:[{volume:"10 таблеток", price:"240₽"}]}
+ ]
+},
 
-  {
-    category: "",
-    name: "",
-    price: "0 €",
-    volume: "Enter volume",
-    description: "Write product description here.",
-    image: ""
-  },
+/* КАТЕГОРИЯ 3 — STEROID */
+{
+ name:"STEROID",
+ products:[
+  {name:"Masteron (Drostanolone Propionate)", image:"", certificate:"", description:"Инъекционный стероид. 100 мг/мл.", volumes:[{volume:"10ml", price:"4 790₽"}]},
+  {name:"Primobolan (Methenolone Enanthate)", image:"", certificate:"", description:"Инъекционный стероид. 100 мг/мл.", volumes:[{volume:"10ml", price:"879₽"}]},
+  {name:"Testosterone Cypionate", image:"", certificate:"", description:"Инъекционный стероид. 250 мг/мл.", volumes:[{volume:"10ml", price:"3 390₽"}]},
+  {name:"Trenbolone Acetate", image:"", certificate:"", description:"Инъекционный стероид. 100 мг/мл.", volumes:[{volume:"10ml", price:"6 000₽"}]},
+  {name:"Testosterone Enanthate", image:"", certificate:"", description:"Инъекционный стероид. 250 мг/мл.", volumes:[{volume:"10ml", price:"3 500₽"}]},
+  {name:"Testosterone Undecanoate", image:"", certificate:"", description:"Оральный стероид. 40 мг.", volumes:[{volume:"10 таблеток", price:"500₽"}]},
+  {name:"Anadrol (Oxymetholone)", image:"", certificate:"", description:"Оральный стероид. 50 мг.", volumes:[{volume:"10 таблеток", price:"890₽"}]},
+  {name:"Oxymetholone (50mg)", image:"", certificate:"", description:"Оральный стероид. 50мг.", volumes:[{volume:"100 таблеток", price:"5 790₽"}]},
+  {name:"Oxandrolone (10mg)", image:"", certificate:"", description:"Оральный стероид. 10мг.", volumes:[{volume:"10 таблеток", price:"1 000₽"}]},
+  {name:"Stanozolol (10mg)", image:"", certificate:"", description:"Оральный стероид. 10мг.", volumes:[{volume:"10 таблеток", price:"500₽"}]}
+ ]
+},
 
-  {
-    category: "",
-    name: "",
-    price: "0 €",
-    volume: "Enter volume",
-    description: "Write product description here.",
-    image: ""
-  },
+/* КАТЕГОРИЯ 4 — WEIGHT LOSS */
+{
+ name:"WEIGHT LOSS",
+ products:[
+  {name:"Tirzepatide", image:"", certificate:"", description:"Инъекции для снижения веса. 5мг.", volumes:[{volume:"1 флакон", price:"2 790₽"}]},
+  {name:"Semaglutide", image:"", certificate:"", description:"Инъекции для снижения веса. 3мг.", volumes:[{volume:"10 флаконов", price:"2 790₽"}]},
+  {name:"Semaglutide Oral 7mg", image:"", certificate:"", description:"Для похудения. 7мг.", volumes:[{volume:"10 таблеток", price:"6 000₽"}]},
+  {name:"Semaglutide Oral 14mg", image:"", certificate:"", description:"Для похудения. 14мг.", volumes:[{volume:"10 таблеток", price:"7 000₽"}]},
+  {name:"Orlistat 120mg (Slimtop)", image:"", certificate:"", description:"Блокатор липазы. 120мг.", volumes:[{volume:"10 таблеток", price:"700₽"}]},
+  {name:"Orlistat 60mg (Slimtop)", image:"", certificate:"", description:"Блокатор липазы. 60мг.", volumes:[{volume:"10 таблеток", price:"500₽"}]}
+ ]
+},
 
-  {
-    category: "",
-    name: "",
-    price: "0 €",
-    volume: "Enter volume",
-    description: "Write product description here.",
-    image: ""
-  }
+/* КАТЕГОРИЯ 5 — BONES */
+{
+ name:"BONES",
+ products:[
+  {name:"Romosozumab-aqqg", image:"", certificate:"", description:"Моноклональное антитело для костей. 105 мг.", volumes:[{volume:"2 шприца", price:"40 000₽"}]},
+  {name:"Teriparatide", image:"", certificate:"", description:"Аналог PTH для костей. 600 мкг.", volumes:[{volume:"1 шприц", price:"9 000₽"}]},
+  {name:"Denosumab", image:"", certificate:"", description:"Ингибитор резорбции костей. 120 мг.", volumes:[{volume:"1 шприц", price:"40 000₽"}]}
+ ]
+},
+
+/* КАТЕГОРИЯ 6 — OTHER */
+{
+ name:"OTHER",
+ products:[
+  {name:"Tretinoin", image:"", certificate:"", description:"Ретиноид для кожи.", forms:[
+   {name:"Крем", volumes:[{volume:"0.025%", price:"219₽"},{volume:"0.05%", price:"249₽"},{volume:"0.1%", price:"299₽"}]},
+   {name:"Гель", volumes:[{volume:"0.025%", price:"449₽"},{volume:"0.05%", price:"499₽"},{volume:"0.1%", price:"649₽"}]}
+  ]},
+  {name:"Tazarotene", image:"", certificate:"", description:"Ретиноид для кожи.", forms:[
+   {name:"Крем", volumes:[{volume:"0.1%", price:"1 300₽"}]},
+   {name:"Гель", volumes:[{volume:"0.05%", price:"1 000₽"}]}
+  ]},
+  {name:"Azelaic Acid", image:"", certificate:"", description:"Гель для кожи. 20%.", volumes:[{volume:"1 тюбик", price:"790₽"}]},
+  {name:"Betaine Valerate & Betamethasone Cream", image:"", certificate:"", description:"Крем для кожи.", volumes:[{volume:"1 тюбик", price:"500₽"}]},
+  {name:"Hydrocortisone 4%", image:"", certificate:"", description:"Крем для кожи. 4%.", volumes:[{volume:"1 тюбик", price:"490₽"}]},
+  {name:"Kligman's Cream (Hydroquinone, Tretinoin, Fluocinolone)", image:"", certificate:"", description:"Крем для кожи. 20г.", volumes:[{volume:"1 тюбик", price:"1 590₽"}]},
+  {name:"Minoxidil Solution 2%", image:"", certificate:"", description:"Раствор для волос. 2%.", volumes:[{volume:"60ml", price:"1 200₽"}]},
+  {name:"Minoxidil Solution 5%", image:"", certificate:"", description:"Раствор для волос. 5%.", volumes:[{volume:"60ml", price:"1 770₽"}]},
+  {name:"Minoxidil Solution 12.5%", image:"", certificate:"", description:"Раствор для волос. 12.5%.", volumes:[{volume:"60ml", price:"2 890₽"}]},
+  {name:"Somatropin (HGH)", image:"", certificate:"", description:"Гормон роста.", volumes:[{volume:"4 МЕ", price:"2 000₽"},{volume:"16 МЕ (ручка)", price:"13 000₽"},{volume:"36 МЕ", price:"25 000₽"}]},
+  {name:"Testosterone Gel 1%", image:"", certificate:"", description:"Гель тестостерона. 1%.", volumes:[{volume:"5g", price:"300₽"},{volume:"80g", price:"4 000₽"}]},
+  {name:"Sevelamer Carbonate", image:"", certificate:"", description:"Фосфат-биндер. 800мг.", volumes:[{volume:"180 таблеток", price:"8 500₽"}]},
+  {name:"Insulin Syringes", image:"", certificate:"", description:"Инсулиновые шприцы.", volumes:[{volume:"100шт", price:"1 000₽"}]}
+ ]
+}
 
 ];
 
-/* OPEN STORE */
+/* ==================================================
+   ЛОГИКА САЙТА
+================================================== */
 
-function enterShop() {
-
-  document.getElementById("introScreen").classList.add("hidden");
-
-  document.getElementById("store").classList.remove("hidden");
-
-  renderCategories();
-
+function isPlaceholder(value){
+ return !value || value.startsWith("ВПИШИ СЮДА");
+}
+function safeText(value,fallback){
+ return isPlaceholder(value)?fallback:value;
 }
 
-/* CATEGORY NAMES */
-
-function categoryLabel(item,index) {
-
-  return item.category.trim() || `CATEGORY ${index+1}`;
-
+function enterShop(){
+ document.getElementById("intro").classList.add("hidden");
+ document.getElementById("store").classList.remove("hidden");
+ renderCategories();
 }
 
-/* PRODUCT NAMES */
+function renderCategories(){
+ const grid=document.getElementById("categoryGrid");
+ grid.innerHTML="";
 
-function productLabel(item,index) {
-
-  return item.name.trim() || `PRODUCT ${index+1}`;
-
+ productsData.forEach((category,index)=>{
+  const button=document.createElement("button");
+  button.className="category-card";
+  button.innerHTML=`
+   <span class="category-number">0${index+1} / CATEGORY</span>
+   <span class="category-name"></span>
+   <span class="category-count">${category.products.length} товаров</span>
+   <span class="category-arrow">↗</span>`;
+  button.querySelector(".category-name").textContent=
+   safeText(category.name,"КАТЕГОРИЯ "+(index+1));
+  button.onclick=()=>openCategory(index);
+  grid.appendChild(button);
+ });
 }
 
-/* DISPLAY CATEGORIES */
+function openCategory(index){
+ document.getElementById("categoriesSection").classList.add("hidden");
+ document.getElementById("productsSection").classList.remove("hidden");
 
-function renderCategories() {
+ const category=productsData[index];
+ document.getElementById("productsHeading").textContent=
+  safeText(category.name,"КАТЕГОРИЯ "+(index+1));
 
-  const nav = document.getElementById("categoryNav");
+ const grid=document.getElementById("productsGrid");
+ grid.innerHTML="";
 
-  nav.innerHTML = "";
+ category.products.forEach((product,productIndex)=>{
+  const card=document.createElement("div");
+  card.className="product-card";
 
-  productsData.forEach((item,index) => {
+  const button=document.createElement("button");
+  button.className="product-open";
 
-    const button = document.createElement("button");
+  const img=document.createElement("img");
+  img.className="product-image";
+  img.alt="Фото товара";
+  if(!isPlaceholder(product.image))img.src=product.image;
 
-    button.className = "category-btn";
+  const name=document.createElement("span");
+  name.className="product-name";
+  name.textContent=safeText(product.name,"ТОВАР "+(productIndex+1));
 
-    button.textContent = categoryLabel(item,index);
+  button.appendChild(img);
+  button.appendChild(name);
+  button.onclick=()=>openProduct(product,productIndex);
 
-    button.onclick = () => openCategory(index);
+  const contact=document.createElement("a");
+  contact.className="product-contact";
+  contact.href="https://t.me/erda10";
+  contact.target="_blank";
+  contact.textContent="CONTACT THE MANAGER";
 
-    nav.appendChild(button);
+  card.appendChild(button);
+  card.appendChild(contact);
+  grid.appendChild(card);
+ });
 
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function backToCategories(){
+ document.getElementById("productsSection").classList.add("hidden");
+ document.getElementById("categoriesSection").classList.remove("hidden");
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+let currentProduct=null;
+let currentForm=0;
+let currentVolume=0;
+
+function openProduct(product,index){
+ currentProduct=product;
+ currentForm=0;
+ currentVolume=0;
+
+ document.getElementById("modalTitle").textContent=
+  safeText(product.name,"ТОВАР "+(index+1));
+
+ document.getElementById("modalDescription").textContent=
+  safeText(product.description,"Описание пока не заполнено.");
+
+ const productImage=document.getElementById("modalProductImage");
+ const certificateImage=document.getElementById("modalCertificateImage");
+
+ productImage.src=isPlaceholder(product.image)?"":product.image;
+ certificateImage.src=isPlaceholder(product.certificate)?"":product.certificate;
+
+ const formArea=document.getElementById("formArea");
+ const formButtons=document.getElementById("formButtons");
+ formButtons.innerHTML="";
+
+ if(product.forms){
+  formArea.classList.remove("hidden");
+
+  product.forms.forEach((form,index)=>{
+   const button=document.createElement("button");
+   button.className="choice-btn";
+   button.textContent=form.name;
+   button.onclick=()=>{
+    currentForm=index;
+    currentVolume=0;
+    renderFormButtons();
+    renderVolumes();
+   };
+   formButtons.appendChild(button);
   });
 
-  showCategories();
+  renderFormButtons();
+ }else{
+  formArea.classList.add("hidden");
+ }
 
+ renderVolumes();
+ document.getElementById("productModal").classList.add("active");
+ document.body.style.overflow="hidden";
 }
 
-/* OPEN SELECTED CATEGORY */
-
-function openCategory(index) {
-
-  const item = productsData[index];
-
-  document.getElementById("categoriesView").classList.add("hidden");
-
-  document.getElementById("productsView").classList.remove("hidden");
-
-  document.getElementById("categoryTitle").textContent =
-    categoryLabel(item,index);
-
-  const products = document.getElementById("products");
-
-  products.innerHTML = "";
-
-  const card = document.createElement("article");
-
-  card.className = "product";
-
-  /* IMAGE */
-
-  const photo = document.createElement("div");
-
-  photo.className = "product-photo";
-
-  if(item.image) {
-
-    const img = document.createElement("img");
-
-    img.src = item.image;
-
-    img.alt = productLabel(item,index);
-
-    photo.appendChild(img);
-
-  } else {
-
-    const placeholder = document.createElement("span");
-
-    placeholder.className = "photo-placeholder";
-
-    placeholder.textContent = "PRODUCT IMAGE";
-
-    photo.appendChild(placeholder);
-
-  }
-
-  /* PRODUCT INFORMATION */
-
-  const info = document.createElement("div");
-
-  info.className = "product-info";
-
-  const name = document.createElement("h3");
-
-  name.className = "product-name";
-
-  name.textContent = productLabel(item,index);
-
-  const meta = document.createElement("div");
-
-  meta.className = "meta";
-
-  const volume = document.createElement("span");
-
-  volume.textContent = item.volume;
-
-  const price = document.createElement("span");
-
-  price.className = "price";
-
-  price.textContent = item.price;
-
-  meta.append(volume,price);
-
-  const hint = document.createElement("div");
-
-  hint.className = "open-hint";
-
-  hint.textContent = "CLICK TO VIEW DETAILS →";
-
-  /* MANAGER BUTTON */
-
-  const manager = document.createElement("a");
-
-  manager.className = "manager-link";
-
-  manager.href = "https://t.me/erda10";
-
-  manager.target = "_blank";
-
-  manager.rel = "noopener noreferrer";
-
-  manager.textContent = "CONTACT THE MANAGER";
-
-  manager.onclick = (e) => e.stopPropagation();
-
-  info.append(name,meta,hint,manager);
-
-  card.append(photo,info);
-
-  card.onclick = () => openProduct(index);
-
-  products.appendChild(card);
-
+function getVolumes(){
+ if(currentProduct.forms){
+  return currentProduct.forms[currentForm].volumes;
+ }
+ return currentProduct.volumes;
 }
 
-/* BACK TO CATEGORIES */
-
-function showCategories() {
-
-  document.getElementById("productsView").classList.add("hidden");
-
-  document.getElementById("categoriesView").classList.remove("hidden");
-
+function renderFormButtons(){
+ document.querySelectorAll("#formButtons button").forEach((button,index)=>{
+  button.classList.toggle("active",index===currentForm);
+ });
 }
 
-/* PRODUCT DETAILS */
+function renderVolumes(){
+ const area=document.getElementById("volumeButtons");
+ area.innerHTML="";
 
-function openProduct(index) {
+ const volumes=getVolumes();
 
-  const item = productsData[index];
+ volumes.forEach((item,index)=>{
+  const button=document.createElement("button");
+  button.className="choice-btn";
+  button.textContent=safeText(item.volume,"ВАРИАНТ "+(index+1));
+  button.classList.toggle("active",index===currentVolume);
 
-  document.getElementById("detailName").textContent =
-    productLabel(item,index);
+  button.onclick=()=>{
+   currentVolume=index;
+   renderVolumes();
+  };
 
-  document.getElementById("detailPrice").textContent =
-    item.price;
+  area.appendChild(button);
+ });
 
-  document.getElementById("detailVolume").textContent =
-    item.volume;
-
-  document.getElementById("detailDescription").textContent =
-    item.description;
-
-  const imageBox = document.getElementById("detailImage");
-
-  imageBox.innerHTML = "";
-
-  if(item.image) {
-
-    const img = document.createElement("img");
-
-    img.src = item.image;
-
-    img.alt = productLabel(item,index);
-
-    imageBox.appendChild(img);
-
-  } else {
-
-    const placeholder = document.createElement("span");
-
-    placeholder.className = "photo-placeholder";
-
-    placeholder.textContent = "PRODUCT IMAGE";
-
-    imageBox.appendChild(placeholder);
-
-  }
-
-  document.getElementById("modal").classList.add("show");
-
+ updatePrice();
 }
 
-/* CLOSE PRODUCT */
-
-function closeProduct() {
-
-  document.getElementById("modal").classList.remove("show");
-
+function updatePrice(){
+ const item=getVolumes()[currentVolume];
+ const price=item?safeText(item.price,"Не указана"):"Не указана";
+ document.getElementById("priceDisplay").textContent="Цена: "+price;
 }
 
-document.getElementById("modal").addEventListener("click",e => {
+function closeModal(){
+ document.getElementById("productModal").classList.remove("active");
+ document.body.style.overflow="";
+}
 
-  if(e.target.id === "modal") {
-
-    closeProduct();
-
-  }
-
+document.getElementById("productModal").addEventListener("click",function(event){
+ if(event.target===this)closeModal();
 });
 
-document.addEventListener("keydown",e => {
+function zoomImage(src){
+ if(!src)return;
+ document.getElementById("zoomedImage").src=src;
+ document.getElementById("imageView").classList.add("active");
+}
+function closeZoom(){
+ document.getElementById("imageView").classList.remove("active");
+}
 
-  if(e.key === "Escape") {
-
-    closeProduct();
-
-  }
-
+document.addEventListener("keydown",function(event){
+ if(event.key==="Escape"){
+  closeZoom();
+  closeModal();
+ }
 });
-
-/* YEAR */
-
-document.getElementById("year").textContent =
-  new Date().getFullYear();
 
 </script>
-
 </body>
 </html>
